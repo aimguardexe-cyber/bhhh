@@ -9,13 +9,19 @@ import {
 } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import AddProductButton from "@/components/add-product-button"
+import { Check, ShoppingCart } from "lucide-react"
 
 const products = [
   {
     id: "panel-android",
     name: "Android Control Panel",
-    description: "A powerful and intuitive control panel for managing your Android applications. Features include real-time analytics, user management, and push notifications.",
+    features: [
+      "Real-time analytics",
+      "User management",
+      "Push notifications",
+      "In-app purchases",
+    ],
+    price: "₹499",
     imageUrl: "https://picsum.photos/seed/panel-android/600/400",
     imageHint: "dashboard interface",
     tags: ["Android", "SaaS", "Admin"],
@@ -23,7 +29,13 @@ const products = [
   {
     id: "pc-panel",
     name: "Desktop Control Panel",
-    description: "The ultimate desktop solution for monitoring and controlling your software services. Cross-platform compatibility with Windows, macOS, and Linux.",
+    features: [
+      "Cross-platform (Win, macOS, Linux)",
+      "System monitoring",
+      "Remote access",
+      "Automated tasks",
+    ],
+    price: "₹999",
     imageUrl: "https://picsum.photos/seed/pc-panel/600/400",
     imageHint: "desktop application",
     tags: ["Desktop", "Software", "Utility"],
@@ -31,7 +43,13 @@ const products = [
   {
     id: "codes",
     name: "Modern Code Snippets",
-    description: "A curated library of modern, reusable code snippets for web development. Covers React, Next.js, and Tailwind CSS for rapid prototyping.",
+    features: [
+      "React & Next.js snippets",
+      "Tailwind CSS components",
+      "TypeScript ready",
+      "Easy integration",
+    ],
+    price: "₹299",
     imageUrl: "https://picsum.photos/seed/codes/600/400",
     imageHint: "code editor",
     tags: ["Web Dev", "React", "Snippets"],
@@ -43,12 +61,11 @@ export default function ProductsPage() {
     <div className="flex flex-col gap-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold">Your Products</h1>
+          <h1 className="text-2xl font-bold">Our Products</h1>
           <p className="text-muted-foreground">
-            Manage and view all your created products.
+            Explore our range of powerful developer tools.
           </p>
         </div>
-        <AddProductButton />
       </div>
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {products.map((product) => (
@@ -71,10 +88,20 @@ export default function ProductsPage() {
                   <Badge key={tag} variant="secondary">{tag}</Badge>
                 ))}
               </div>
-              <CardDescription>{product.description}</CardDescription>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                {product.features.map(feature => (
+                  <li key={feature} className="flex items-center gap-2">
+                    <Check className="h-4 w-4 text-primary" />
+                    <span>{feature}</span>
+                  </li>
+                ))}
+              </ul>
             </CardContent>
-            <CardFooter className="p-6 pt-0">
-              <Button variant="outline" className="w-full">View Details</Button>
+            <CardFooter className="p-6 pt-0 flex items-center justify-between">
+              <p className="text-xl font-bold">{product.price}</p>
+              <Button>
+                <ShoppingCart className="mr-2 h-4 w-4" /> Buy Now
+              </Button>
             </CardFooter>
           </Card>
         ))}
