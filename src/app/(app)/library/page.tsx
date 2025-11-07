@@ -9,7 +9,7 @@ import {
   CardFooter,
 } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { KeyRound, User, Lock, Youtube } from "lucide-react"
+import { KeyRound, User, Lock, Youtube, Download } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 
 const purchasedProducts = [
@@ -25,6 +25,7 @@ const purchasedProducts = [
       pass: "p@ssw0rd123!",
     },
     tutorialUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    downloadUrl: "#",
   },
   {
     id: "codes",
@@ -38,6 +39,7 @@ const purchasedProducts = [
       pass: "p@ssw0rd123!",
     },
     tutorialUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+    downloadUrl: "#",
   },
 ]
 
@@ -73,7 +75,7 @@ export default function LibraryPage() {
       ) : (
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
             {purchasedProducts.map((product) => (
-            <Card key={product.id} className="overflow-hidden">
+            <Card key={product.id} className="overflow-hidden flex flex-col">
                 <div className="relative h-48 w-full">
                     <Image
                     src={product.imageUrl}
@@ -91,7 +93,7 @@ export default function LibraryPage() {
                         ))}
                     </div>
                 </CardHeader>
-                <CardContent className="space-y-4">
+                <CardContent className="space-y-4 flex-1">
                     <div>
                         <h3 className="font-semibold mb-2">Your Credentials</h3>
                         <div className="space-y-3 rounded-md border bg-muted/30 p-4">
@@ -119,11 +121,17 @@ export default function LibraryPage() {
                         </div>
                     </div>
                 </CardContent>
-                <CardFooter>
-                    <Button asChild className="w-full">
+                <CardFooter className="grid grid-cols-2 gap-4">
+                    <Button asChild variant="outline">
                         <a href={product.tutorialUrl} target="_blank" rel="noopener noreferrer">
                             <Youtube className="mr-2" />
                             Watch Tutorial
+                        </a>
+                    </Button>
+                    <Button asChild>
+                        <a href={product.downloadUrl} download>
+                            <Download className="mr-2" />
+                            Download
                         </a>
                     </Button>
                 </CardFooter>
