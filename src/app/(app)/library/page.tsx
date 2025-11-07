@@ -1,23 +1,35 @@
 
-import Image from "next/image"
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-  CardFooter,
 } from "@/components/ui/card"
+import {
+    Table,
+    TableHeader,
+    TableBody,
+    TableFooter,
+    TableHead,
+    TableRow,
+    TableCell,
+    TableCaption,
+  } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
-import { KeyRound, User, Lock, Youtube, Download } from "lucide-react"
+import { KeyRound, User, Lock, Youtube, Download, Copy, MoreHorizontal } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuTrigger,
+  } from "@/components/ui/dropdown-menu"
 
 const purchasedProducts = [
   {
     id: "panel-android",
     name: "Android Control Panel",
-    imageUrl: "https://picsum.photos/seed/panel-android/600/400",
-    imageHint: "dashboard interface",
     tags: ["Android", "SaaS", "Admin"],
     credentials: {
       key: "ANDROID-USER-A1B2-C3D4-E5F6",
@@ -30,8 +42,6 @@ const purchasedProducts = [
   {
     id: "codes",
     name: "Modern Code Snippets",
-    imageUrl: "https://picsum.photos/seed/codes/600/400",
-    imageHint: "code editor",
     tags: ["Web Dev", "React", "Snippets"],
     credentials: {
       key: "SNIPPETS-USER-F6E5-D4C3-B2A1",
@@ -42,12 +52,6 @@ const purchasedProducts = [
     downloadUrl: "#",
   },
 ]
-
-const credentialIcons = {
-  key: <KeyRound className="h-5 w-5 text-muted-foreground" />,
-  user: <User className="h-5 w-5 text-muted-foreground" />,
-  pass: <Lock className="h-5 w-5 text-muted-foreground" />,
-}
 
 export default function LibraryPage() {
   return (
@@ -73,71 +77,88 @@ export default function LibraryPage() {
             </CardContent>
         </Card>
       ) : (
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-            {purchasedProducts.map((product) => (
-            <Card key={product.id} className="overflow-hidden flex flex-col">
-                <div className="relative h-48 w-full">
-                    <Image
-                    src={product.imageUrl}
-                    alt={product.name}
-                    fill
-                    className="object-cover"
-                    data-ai-hint={product.imageHint}
-                    />
-                </div>
-                <CardHeader>
-                    <CardTitle>{product.name}</CardTitle>
-                    <div className="flex gap-2 pt-1">
-                        {product.tags.map(tag => (
-                        <Badge key={tag} variant="secondary">{tag}</Badge>
+        <Card>
+            <CardContent className="p-0">
+                <Table>
+                    <TableHeader>
+                        <TableRow>
+                            <TableHead>Product</TableHead>
+                            <TableHead className="hidden md:table-cell">Credentials</TableHead>
+                            <TableHead className="text-right">Actions</TableHead>
+                        </TableRow>
+                    </TableHeader>
+                    <TableBody>
+                        {purchasedProducts.map((product) => (
+                            <TableRow key={product.id}>
+                                <TableCell>
+                                    <div className="font-medium">{product.name}</div>
+                                    <div className="flex gap-1 pt-1">
+                                        {product.tags.map(tag => (
+                                            <Badge key={tag} variant="secondary" className="text-xs">{tag}</Badge>
+                                        ))}
+                                    </div>
+                                </TableCell>
+                                <TableCell className="hidden md:table-cell">
+                                    <div className="flex items-center gap-2">
+                                        <KeyRound className="h-4 w-4 text-muted-foreground" />
+                                        <span className="font-mono text-sm">{product.credentials.key}</span>
+                                        <Button variant="ghost" size="icon" className="h-6 w-6">
+                                            <Copy className="h-3 w-3" />
+                                        </Button>
+                                    </div>
+                                    <div className="flex items-center gap-2">
+                                        <User className="h-4 w-4 text-muted-foreground" />
+                                        <span className="font-mono text-sm">{product.credentials.user}</span>
+                                    </div>
+                                    <div className="flex items-center gap-2">
+                                        <Lock className="h-4 w-4 text-muted-foreground" />
+                                        <span className="font-mono text-sm">{product.credentials.pass}</span>
+                                    </div>
+                                </TableCell>
+                                <TableCell className="text-right">
+                                    <div className="hidden md:flex items-center justify-end gap-2">
+                                        <Button asChild variant="outline" size="sm">
+                                            <a href={product.tutorialUrl} target="_blank" rel="noopener noreferrer">
+                                                <Youtube className="mr-2 h-4 w-4" />
+                                                Tutorial
+                                            </a>
+                                        </Button>
+                                        <Button asChild size="sm">
+                                            <a href={product.downloadUrl} download>
+                                                <Download className="mr-2 h-4 w-4" />
+                                                Download
+                                            </a>
+                                        </Button>
+                                    </div>
+                                    <div className="md:hidden">
+                                        <DropdownMenu>
+                                            <DropdownMenuTrigger asChild>
+                                                <Button variant="ghost" size="icon">
+                                                    <MoreHorizontal />
+                                                </Button>
+                                            </DropdownMenuTrigger>
+                                            <DropdownMenuContent align="end">
+                                                <DropdownMenuItem>View Credentials</DropdownMenuItem>
+                                                <DropdownMenuItem asChild>
+                                                    <a href={product.tutorialUrl} target="_blank" rel="noopener noreferrer">
+                                                        Watch Tutorial
+                                                    </a>
+                                                </DropdownMenuItem>
+                                                <DropdownMenuItem asChild>
+                                                     <a href={product.downloadUrl} download>
+                                                        Download
+                                                    </a>
+                                                </DropdownMenuItem>
+                                            </DropdownMenuContent>
+                                        </DropdownMenu>
+                                    </div>
+                                </TableCell>
+                            </TableRow>
                         ))}
-                    </div>
-                </CardHeader>
-                <CardContent className="space-y-4 flex-1">
-                    <div>
-                        <h3 className="font-semibold mb-2">Your Credentials</h3>
-                        <div className="space-y-3 rounded-md border bg-muted/30 p-4">
-                            <div className="flex items-center gap-3">
-                                {credentialIcons.key}
-                                <div className="flex flex-col">
-                                    <span className="text-xs text-muted-foreground">License Key</span>
-                                    <span className="font-mono text-sm">{product.credentials.key}</span>
-                                </div>
-                            </div>
-                            <div className="flex items-center gap-3">
-                                {credentialIcons.user}
-                                <div className="flex flex-col">
-                                    <span className="text-xs text-muted-foreground">Username</span>
-                                    <span className="font-mono text-sm">{product.credentials.user}</span>
-                                </div>
-                            </div>
-                            <div className="flex items-center gap-3">
-                                {credentialIcons.pass}
-                                <div className="flex flex-col">
-                                    <span className="text-xs text-muted-foreground">Password</span>
-                                    <span className="font-mono text-sm">{product.credentials.pass}</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </CardContent>
-                <CardFooter className="grid grid-cols-2 gap-4">
-                    <Button asChild variant="outline">
-                        <a href={product.tutorialUrl} target="_blank" rel="noopener noreferrer">
-                            <Youtube className="mr-2" />
-                            Watch Tutorial
-                        </a>
-                    </Button>
-                    <Button asChild>
-                        <a href={product.downloadUrl} download>
-                            <Download className="mr-2" />
-                            Download
-                        </a>
-                    </Button>
-                </CardFooter>
-            </Card>
-            ))}
-        </div>
+                    </TableBody>
+                </Table>
+            </CardContent>
+        </Card>
       )}
     </div>
   )
