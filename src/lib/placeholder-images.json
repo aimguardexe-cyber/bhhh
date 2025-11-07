@@ -5,6 +5,24 @@
       "description": "A placeholder avatar for a user.",
       "imageUrl": "",
       "imageHint": "avatar person"
+    },
+    {
+      "id": "product-android-panel",
+      "description": "A placeholder for an Android control panel.",
+      "imageUrl": "https://images.unsplash.com/photo-1758411898021-ef0dadaaa295?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxkYXNoYm9hcmQlMjBpbnRlcmZhY2V8ZW58MHx8fHwxNzYyNTA2MzYzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "dashboard interface"
+    },
+    {
+      "id": "product-pc-panel",
+      "description": "A placeholder for a desktop control panel.",
+      "imageUrl": "https://images.unsplash.com/photo-1726462987391-fbb6991a8248?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8ZGVza3RvcCUyMGFwcGxpY2F0aW9ufGVufDB8fHx8MTc2MjQ5MDQxOXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "desktop application"
+    },
+    {
+      "id": "product-codes",
+      "description": "A placeholder for code snippets.",
+      "imageUrl": "https://images.unsplash.com/photo-1566915896913-549d796d2166?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxjb2RlJTIwZWRpdG9yfGVufDB8fHx8MTc2MjUxNzExNHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "code editor"
     }
   ]
 }
