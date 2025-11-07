@@ -37,25 +37,6 @@ const infoCards = [
   },
 ]
 
-const quickStats = [
-  {
-    value: "0",
-    label: "Total Apps",
-    color: "text-blue-500",
-  },
-  {
-    value: "Unpaid",
-    label: "Payment Status",
-    color: "text-green-500",
-  },
-  {
-    value: "No",
-    label: "Premium Access",
-    color: "text-orange-500",
-  },
-];
-
-
 export default function ProfilePage() {
   return (
     <div className="flex flex-col gap-8">
@@ -91,22 +72,6 @@ export default function ProfilePage() {
               </Card>
             ))}
           </div>
-        </CardContent>
-      </Card>
-      
-      <Card>
-        <CardHeader>
-          <CardTitle>Quick Stats</CardTitle>
-        </CardHeader>
-        <CardContent className="grid grid-cols-1 gap-6 md:grid-cols-3">
-          {quickStats.map((stat) => (
-            <Card key={stat.label} className="bg-secondary/30 dark:bg-secondary/10 text-center">
-              <CardContent className="p-6">
-                <p className={`text-3xl font-bold ${stat.color}`}>{stat.value}</p>
-                <p className="text-sm text-muted-foreground">{stat.label}</p>
-              </CardContent>
-            </Card>
-          ))}
         </CardContent>
       </Card>
 
