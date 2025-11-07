@@ -4,7 +4,6 @@
 import {
   Avatar,
   AvatarFallback,
-  AvatarImage,
 } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import {
@@ -16,14 +15,12 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 import { SidebarTrigger } from "@/components/ui/sidebar"
-import { PlaceHolderImages } from "@/lib/placeholder-images"
 import { User, LogOut } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useMemo } from "react"
 
 const AppHeader = () => {
-  const userAvatar = PlaceHolderImages.find(p => p.id === 'user-avatar');
   const pathname = usePathname();
 
   const pageTitle = useMemo(() => {
@@ -43,7 +40,7 @@ const AppHeader = () => {
       case '/library':
         return "Explore your saved resources.";
       default:
-        return "";
+        return "View your account information and platform statistics.";
     }
   }, [pathname]);
 
@@ -65,7 +62,6 @@ const AppHeader = () => {
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="relative h-10 w-10 rounded-full">
               <Avatar className="h-10 w-10">
-                <AvatarImage src={userAvatar?.imageUrl} data-ai-hint={userAvatar?.imageHint} />
                 <AvatarFallback>
                   <User />
                 </AvatarFallback>
@@ -73,7 +69,7 @@ const AppHeader = () => {
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-56">
-            <DropdownMenuLabel>User Name</DropdownMenuLabel>
+            <DropdownMenuLabel>Lokesh Prajapat</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem asChild>
               <Link href="/profile">

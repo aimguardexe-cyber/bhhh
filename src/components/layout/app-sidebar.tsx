@@ -4,7 +4,6 @@
 import {
   Avatar,
   AvatarFallback,
-  AvatarImage,
 } from "@/components/ui/avatar"
 import {
   SidebarContent,
@@ -15,13 +14,11 @@ import {
   SidebarMenuButton,
   SidebarSeparator,
 } from "@/components/ui/sidebar"
-import { PlaceHolderImages } from "@/lib/placeholder-images"
 import { Code2, Home, Box, Book, User, LogOut } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
 const AppSidebar = () => {
-  const userAvatar = PlaceHolderImages.find(p => p.id === 'user-avatar');
   const pathname = usePathname();
 
   const menuItems = [
@@ -71,14 +68,13 @@ const AppSidebar = () => {
         <SidebarSeparator className="my-2"/>
         <div className="flex items-center gap-3 overflow-hidden">
           <Avatar>
-            <AvatarImage src={userAvatar?.imageUrl} data-ai-hint={userAvatar?.imageHint} />
             <AvatarFallback>
               <User />
             </AvatarFallback>
           </Avatar>
           <div className="flex flex-col text-sm truncate">
-            <span className="font-semibold truncate">User Name</span>
-            <span className="text-muted-foreground truncate">username@email.com</span>
+            <span className="font-semibold truncate">Lokesh Prajapat</span>
+            <span className="text-muted-foreground truncate">lk07062005@gmail.com</span>
           </div>
         </div>
       </SidebarFooter>
