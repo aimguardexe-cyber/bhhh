@@ -1,3 +1,4 @@
+
 "use client"
 
 import {
@@ -17,9 +18,18 @@ import {
 import { PlaceHolderImages } from "@/lib/placeholder-images"
 import { Code2, Home, Box, Book, User, LogOut } from "lucide-react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 
 const AppSidebar = () => {
   const userAvatar = PlaceHolderImages.find(p => p.id === 'user-avatar');
+  const pathname = usePathname();
+
+  const menuItems = [
+    { href: "/dashboard", icon: <Home />, label: "Dashboard" },
+    { href: "/products", icon: <Box />, label: "Products" },
+    { href: "/library", icon: <Book />, label: "Library" },
+    { href: "/profile", icon: <User />, label: "Profile" },
+  ];
 
   return (
     <>
@@ -34,38 +44,16 @@ const AppSidebar = () => {
 
       <SidebarContent className="p-2">
         <SidebarMenu>
-          <SidebarMenuItem>
-            <SidebarMenuButton asChild tooltip="Dashboard" isActive>
-              <Link href="/dashboard">
-                <Home />
-                <span>Dashboard</span>
-              </Link>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-          <SidebarMenuItem>
-            <SidebarMenuButton asChild tooltip="Products">
-              <Link href="#">
-                <Box />
-                <span>Products</span>
-              </Link>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-          <SidebarMenuItem>
-            <SidebarMenuButton asChild tooltip="Library">
-              <Link href="#">
-                <Book />
-                <span>Library</span>
-              </Link>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-          <SidebarMenuItem>
-            <SidebarMenuButton asChild tooltip="Profile">
-              <Link href="#">
-                <User />
-                <span>Profile</span>
-              </Link>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
+          {menuItems.map((item) => (
+            <SidebarMenuItem key={item.href}>
+              <SidebarMenuButton asChild tooltip={item.label} isActive={pathname === item.href}>
+                <Link href={item.href}>
+                  {item.icon}
+                  <span>{item.label}</span>
+                </Link>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          ))}
         </SidebarMenu>
       </SidebarContent>
 
