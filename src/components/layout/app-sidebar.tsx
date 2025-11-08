@@ -14,7 +14,7 @@ import {
   SidebarMenuButton,
   SidebarSeparator,
 } from "@/components/ui/sidebar"
-import { Code2, Home, Box, Book, User, LogOut } from "lucide-react"
+import { Code2, Home, Box, Book, User, LogOut, History } from "lucide-react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
@@ -25,6 +25,7 @@ const AppSidebar = () => {
     { href: "/dashboard", icon: <Home />, label: "Dashboard" },
     { href: "/products", icon: <Box />, label: "Products" },
     { href: "/library", icon: <Book />, label: "Library" },
+    { href: "/history", icon: <History />, label: "Payment History" },
   ];
 
   return (

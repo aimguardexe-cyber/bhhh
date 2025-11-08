@@ -26,6 +26,7 @@ const AppHeader = () => {
   const pageTitle = useMemo(() => {
     const segment = pathname.split('/').filter(Boolean).pop();
     if (!segment) return "Dashboard";
+    if (segment === "history") return "Payment History";
     return segment.charAt(0).toUpperCase() + segment.slice(1);
   }, [pathname]);
 
@@ -39,6 +40,8 @@ const AppHeader = () => {
         return "Browse and manage your products.";
       case '/library':
         return "Explore your saved resources.";
+      case '/history':
+        return "View your transaction history.";
       default:
         return "View your account information and platform statistics.";
     }
