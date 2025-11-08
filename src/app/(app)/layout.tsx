@@ -1,6 +1,7 @@
 import AppSidebar from '@/components/layout/app-sidebar';
 import AppHeader from '@/components/layout/app-header';
 import { Sidebar, SidebarInset } from '@/components/ui/sidebar';
+import ClientOnly from '@/components/client-only';
 
 export default function AppLayout({
   children,
@@ -10,7 +11,9 @@ export default function AppLayout({
   return (
     <>
       <Sidebar>
-        <AppSidebar />
+        <ClientOnly>
+          <AppSidebar />
+        </ClientOnly>
       </Sidebar>
       <SidebarInset>
         <AppHeader />
