@@ -39,6 +39,8 @@ const AppHeader = () => {
         return "Browse and manage your products.";
       case '/library':
         return "Explore your saved resources.";
+      case '/chatbot':
+        return "Ask me anything about our products or your account.";
       default:
         return "View your account information and platform statistics.";
     }
