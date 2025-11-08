@@ -25,7 +25,6 @@ const AppSidebar = () => {
     { href: "/dashboard", icon: <Home />, label: "Dashboard" },
     { href: "/products", icon: <Box />, label: "Products" },
     { href: "/library", icon: <Book />, label: "Library" },
-    { href: "/profile", icon: <User />, label: "Profile" },
   ];
 
   return (
@@ -56,6 +55,14 @@ const AppSidebar = () => {
 
       <SidebarFooter className="p-4">
         <SidebarMenu>
+            <SidebarMenuItem>
+                <SidebarMenuButton asChild tooltip="Profile" isActive={pathname === "/profile"}>
+                    <Link href="/profile">
+                        <User />
+                        <span>Profile</span>
+                    </Link>
+                </SidebarMenuButton>
+            </SidebarMenuItem>
           <SidebarMenuItem>
             <SidebarMenuButton asChild tooltip="Logout">
               <Link href="#">
@@ -83,3 +90,4 @@ const AppSidebar = () => {
 }
 
 export default AppSidebar;
+
