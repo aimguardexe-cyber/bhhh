@@ -54,6 +54,7 @@ const AppSidebar = () => {
       </SidebarContent>
 
       <SidebarFooter className="p-4">
+        <SidebarSeparator className="my-2"/>
         <SidebarMenu>
             <SidebarMenuItem>
                 <SidebarMenuButton asChild tooltip="Profile" isActive={pathname === "/profile"}>
@@ -90,4 +91,3 @@ const AppSidebar = () => {
 }
 
 export default AppSidebar;
-
