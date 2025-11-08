@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/table"
 import { Badge } from "@/components/ui/badge"
 import { format } from "date-fns"
+import { Button } from "@/components/ui/button"
 
 const paymentHistory = [
   {
@@ -64,8 +65,9 @@ export default function HistoryPage() {
               <TableRow>
                 <TableHead>Date</TableHead>
                 <TableHead className="hidden sm:table-cell">Product</TableHead>
+                <TableHead className="hidden sm:table-cell">Amount</TableHead>
                 <TableHead className="hidden sm:table-cell">Status</TableHead>
-                <TableHead className="text-right">Amount</TableHead>
+                <TableHead className="text-right">Action</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -76,10 +78,11 @@ export default function HistoryPage() {
                       {format(payment.date, "PPP")}
                     </div>
                     <div className="block sm:hidden text-muted-foreground text-sm">
-                      {payment.product}
+                      {payment.product} - {payment.amount}
                     </div>
                   </TableCell>
                   <TableCell className="hidden sm:table-cell">{payment.product}</TableCell>
+                  <TableCell className="hidden sm:table-cell">{payment.amount}</TableCell>
                   <TableCell className="hidden sm:table-cell">
                     <Badge
                       variant={payment.status === "Paid" ? "outline" : "secondary"}
@@ -92,7 +95,15 @@ export default function HistoryPage() {
                       {payment.status}
                     </Badge>
                   </TableCell>
-                  <TableCell className="text-right">{payment.amount}</TableCell>
+                  <TableCell className="text-right">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      disabled={payment.status !== "Paid"}
+                    >
+                      Request Refund
+                    </Button>
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>
