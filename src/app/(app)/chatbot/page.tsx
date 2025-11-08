@@ -15,24 +15,19 @@ type Message = {
   sender: "user" | "bot"
 }
 
-const predefinedAnswers: Record<string, string> = {
-  "hello": "Hi there! How can I help you today?",
-  "hi": "Hi there! How can I help you today?",
-  "products": "You can find all our products on the 'Products' page. We have an Android Control Panel, a Desktop Control Panel, and Modern Code Snippets.",
-  "pricing": "The Android panel is ₹499, the Desktop panel is ₹999, and the Code Snippets are ₹299.",
-  "library": "Your purchased products are available in your Library. You can find credentials and download links there.",
-  "support": "If you need further assistance, please contact our support team at support@coderyn.com.",
+const predefinedQuestions: Record<string, string> = {
+  "what products do you have?": "We have an Android Control Panel, a Desktop Control Panel, and Modern Code Snippets. You can find them on the 'Products' page.",
+  "what is the pricing?": "The Android panel is ₹499, the Desktop panel is ₹999, and the Code Snippets are ₹299.",
+  "where can i find my purchased products?": "Your purchased products are available in your Library. You can find credentials and download links there.",
+  "how can i contact support?": "If you need further assistance, please contact our support team at support@coderyn.com.",
+  "hello": "Hi there! How can I help you today? You can ask me about products, pricing, or your library.",
+  "hi": "Hi there! How can I help you today? You can ask me about products, pricing, or your library.",
   "bye": "Goodbye! Have a great day.",
 }
 
 const getBotResponse = (message: string): string => {
-  const lowerCaseMessage = message.toLowerCase()
-  for (const keyword in predefinedAnswers) {
-    if (lowerCaseMessage.includes(keyword)) {
-      return predefinedAnswers[keyword]
-    }
-  }
-  return "I'm sorry, I don't understand that. You can ask me about products, pricing, or your library."
+  const lowerCaseMessage = message.toLowerCase().trim()
+  return predefinedQuestions[lowerCaseMessage] || "I'm sorry, I don't understand that. You can ask me questions like 'What products do you have?' or 'What is the pricing?'."
 }
 
 export default function ChatbotPage() {
