@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/table"
 import { Badge } from "@/components/ui/badge"
 import Link from "next/link"
+import Chatbot from "@/components/chatbot"
 
 const kpiCards = [
   {
@@ -124,6 +125,7 @@ export default function DashboardPage() {
           </CardContent>
         </Card>
       </section>
+      <Chatbot />
     </div>
   )
 }
