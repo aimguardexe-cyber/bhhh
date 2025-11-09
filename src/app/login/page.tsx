@@ -13,8 +13,8 @@ import Link from "next/link";
 
 export default function LoginPage() {
   return (
-    <div className="flex items-center justify-center min-h-screen bg-background">
-      <Card className="mx-auto max-w-sm">
+    <div className="flex items-center justify-center min-h-screen bg-background p-4">
+      <Card className="w-full max-w-sm">
         <CardHeader className="space-y-1 text-center">
             <Link href="/" className="flex items-center justify-center pb-4">
                 <Code2 className="h-8 w-8" />

@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Code2 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function LandingPage() {
   return (
@@ -53,7 +54,15 @@ export default function LandingPage() {
                             </p>
                         </div>
                     </div>
-                    <div className="w-full h-64 bg-muted rounded-lg"></div>
+                    <div className="relative w-full h-64 rounded-lg overflow-hidden">
+                      <Image 
+                        src="https://picsum.photos/seed/landing-feature/600/400"
+                        alt="Feature"
+                        fill
+                        className="object-cover"
+                        data-ai-hint="abstract technology"
+                      />
+                    </div>
                 </div>
             </div>
         </section>
