@@ -28,25 +28,23 @@ export default function LandingPage() {
       <main className="flex-1">
         <section className="w-full py-20 md:py-24 lg:py-32 xl:py-48">
           <div className="container px-4 md:px-6">
-            <div className="grid gap-6 items-center">
-                <div className="flex flex-col justify-center space-y-4 text-center">
-                    <div className="space-y-2">
-                        <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
-                        The Ultimate Platform for Digital Creators
-                        </h1>
-                        <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl">
-                        Everything you need to sell, manage, and deliver your digital products seamlessly.
-                        </p>
-                    </div>
-                    <div className="w-full max-w-sm space-y-2 mx-auto">
-                        <div className="flex space-x-2 justify-center">
-                            <Button asChild>
-                                <Link href="/dashboard">Get Started</Link>
-                            </Button>
-                            <Button variant="outline" asChild>
-                                <Link href="#features">Learn More</Link>
-                            </Button>
-                        </div>
+            <div className="flex flex-col justify-center space-y-4 text-center">
+                <div className="space-y-2">
+                    <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
+                    The Ultimate Platform for Digital Creators
+                    </h1>
+                    <p className="mx-auto max-w-[600px] text-muted-foreground md:text-xl">
+                    Everything you need to sell, manage, and deliver your digital products seamlessly.
+                    </p>
+                </div>
+                <div className="w-full max-w-sm space-y-2 mx-auto">
+                    <div className="flex flex-col sm:flex-row gap-2 justify-center">
+                        <Button asChild>
+                            <Link href="/dashboard">Get Started</Link>
+                        </Button>
+                        <Button variant="outline" asChild>
+                            <Link href="#features">Learn More</Link>
+                        </Button>
                     </div>
                 </div>
             </div>
@@ -78,7 +76,7 @@ export default function LandingPage() {
                             </li>
                         </ul>
                     </div>
-                    <div className="relative w-full h-80 rounded-lg overflow-hidden order-first lg:order-last">
+                    <div className="relative w-full h-64 sm:h-80 rounded-lg overflow-hidden order-first lg:order-last">
                       <Image 
                         src="https://picsum.photos/seed/landing-feature/600/400"
                         alt="Feature"

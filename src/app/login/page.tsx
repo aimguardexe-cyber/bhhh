@@ -13,7 +13,7 @@ import Link from "next/link";
 
 export default function LoginPage() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-background p-4 sm:p-6 lg:p-8">
+    <div className="flex items-center justify-center min-h-screen bg-background p-4">
        <div className="absolute top-4 left-4">
           <Button variant="ghost" asChild>
             <Link href="/" className="flex items-center gap-2">
